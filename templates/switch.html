@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; Charset=UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <title>Title</title>
+
+</head>
+<body bgcolor="#b0c4de">
+
+<table width="50%" align="center">
+<!--<td>-->
+<!--<div id="relay">-->
+    <!--<button type="button" onclick="switchRelay()">SwitchRelay</button>-->
+<!--</div>-->
+<!--</td>-->
+<script>
+function switchRelay() {
+  var xhttp = new XMLHttpRequest();
+  // xhttp.onreadystatechange = function() {
+  //   if (this.readyState == 4 && this.status == 200) {
+  //     document.getElementById("demo").innerHTML =
+  //     this.responseText;
+  //   }
+  // };
+  xhttp.open("GET", "/switch/", true);
+  xhttp.send();
+}
+</script>
+<td>
+<div id="content" align="center" onclick="switchRelay()"></div>
+</td>
+</table>
+<script>
+        function show()
+        {
+            $.ajax({
+                url: "/state/",
+                cache: false,
+                success: function(html){
+                    $("#content").html(html);
+                }
+            });
+        }
+
+        $(document).ready(function(){
+            show();
+            setInterval('show()', 1000);
+        });
+    </script>
+</body>
+</html>
