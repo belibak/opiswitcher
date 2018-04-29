@@ -1,0 +1,4 @@
+Django==2.0.4
+OPi.GPIO==0.3.2
+requests==2.18.4
+uWSGI==2.0.17
